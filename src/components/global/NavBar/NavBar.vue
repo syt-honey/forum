@@ -7,7 +7,7 @@
       <label>
         <input type="text" placeholder="搜索主题" />
       </label>
-      <!--      <svg-icon icon-class="user" />-->
+      <svg-icon icon-class="user" />
     </div>
   </div>
 </template>
