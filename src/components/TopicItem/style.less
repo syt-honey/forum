@@ -1,0 +1,43 @@
+.topic-item-container {
+  position: relative;
+  margin-bottom: 30px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #DDDFE6;
+
+  .content-desc {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    padding-top: 5px;
+
+    .tag {
+      padding: 5px 7px;
+      color: #4e88ff;
+      background-color: #F4F8FF;
+      border-radius: 4px;
+    }
+  }
+
+  .content {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+    color: #797979;
+  }
+
+  // 内容展出后样式
+  .topic-content-spread {
+    overflow: auto;
+    color: #797979;
+  }
+
+  // '点击展开'样式
+  .topic-spread {
+    position: absolute;
+    right: 0;
+    bottom: 5px;
+    cursor: pointer;
+  }
+}
