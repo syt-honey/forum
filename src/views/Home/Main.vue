@@ -4,10 +4,10 @@
 
 <script>
 export default {
-  name: "SideBar",
+  name: "Main",
   data() {
     return {
-      msg: "this is sidebar"
+      msg: "main-content"
     };
   }
 };

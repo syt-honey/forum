@@ -44,5 +44,5 @@ export default {
 
 <style lang="less" scoped>
 @import "~@/assets/style/index.less";
-@import "./style.less";
+@import "style.less";
 </style>
