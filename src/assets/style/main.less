@@ -1,0 +1,87 @@
+@import "./variable";
+
+// 设置宽高
+.wh (@width: 88px,
+@height: 33px) {
+  width: @width;
+  height: @height;
+}
+
+//可控flex盒子
+.flex-box (@direction:row,
+@justify-content: center,
+@align-items:center) {
+  display: flex;
+  flex-direction: @direction;
+  justify-content: @justify-content;
+  align-items: @align-items;
+}
+
+.flex-box-wrap (@wrap:wrap) {
+  flex-wrap: @wrap;
+}
+
+.flex-box-wrap-default {
+  .flex-box-wrap();
+}
+
+.flex-center-item {
+  .flex-box(row, center, center);
+}
+
+.flex-start-item {
+  .flex-box(row, flex-start, center);
+}
+
+.flex-all-start-item {
+  .flex-box(row, flex-start, flex-start);
+}
+
+.flex-all-end-item {
+  .flex-box(row, flex-end, flex-end);
+}
+
+.flex-between {
+  .flex-box(row, space-between, center);
+}
+
+.flex-between-start-item {
+  .flex-box(row, space-between, flex-start);
+}
+
+.flex-end-item {
+  .flex-box(row, flex-end, center);
+}
+
+.flex-column-between-start {
+  .flex-box(column, space-between, flex-start);
+}
+
+.flex-column-between-end {
+  .flex-box(column, space-between, flex-end);
+}
+
+.flex-column-start-item {
+  .flex-box(column, center, flex-start);
+}
+
+.flex-column-center-item {
+  .flex-box(column, center, center);
+}
+
+.flex-column-between-item {
+  .flex-box(column, space-between, space-between);
+}
+
+.flex-wrap {
+  .flex-box-wrap();
+}
+
+.flex-auto {
+  flex: 1;
+}
+
+.flex-width-auto {
+  flex: 1;
+  width: 0;
+}
