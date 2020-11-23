@@ -39,9 +39,8 @@ export default {
     }
 
     .main-content {
-      .wh(calc(100% - 200px), calc(100vh - 120px));
-      padding-right: 30px;
-      overflow-y: scroll;
+      .wh(calc(100% - 170px), calc(100vh - 120px));
+      padding-right: 170px;
     }
   }
 }

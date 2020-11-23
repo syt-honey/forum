@@ -2,7 +2,12 @@
   <div class="side-bar-container">
     <button class="publish-button" @click="publishTopic">发表主题</button>
     <div class="topic-container">
-      <div class="topic-item" v-for="(topic, index) of topicList" :key="index">
+      <div
+        class="topic-item"
+        v-for="(topic, index) of topicList"
+        :key="index"
+        @click="findTopics(topic)"
+      >
         <svg-icon
           class-name="svg-icon-topic"
           :icon-class="iconList[index]"
@@ -27,6 +32,10 @@ export default {
     publishTopic() {
       // 发表主题
       this.$router.push({ path: "/publish" });
+    },
+    findTopics(topic) {
+      // 进入到不同的主题
+      console.log(topic);
     }
   }
 };

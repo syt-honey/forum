@@ -1,15 +1,16 @@
 <template>
   <div class="nav-bar-container">
     <div class="nav-bar-content">
-      <div class="avatar-box">
-        <img :src="getLogoSrc" alt="logo" @click="goToHome" />
-      </div>
+      <svg-icon icon-class="logo" class-name="svg-icon-logo" />
       <div class="flex-center-item search-and-user-info">
-        <label>
-          <input v-model="inputText" type="text" placeholder="搜索主题" />
-        </label>
-        <svg-icon style="margin-left: 10px;" :icon-class="user.icon" />
-        <label style="margin-left: 10px;">{{ user.name }}</label>
+<!--        TODO 先自定义UI，之后再考虑写UI库-->
+        <div class="flex-center-item" style="position: relative;">
+          <div class="input-animation">
+            <input v-model="inputText" type="text" placeholder="搜索主题" />
+            <span></span>
+          </div>
+          <svg-icon icon-class="search" />
+        </div>
       </div>
     </div>
   </div>
@@ -29,12 +30,6 @@ export default {
       },
       inputText
     };
-  },
-
-  computed: {
-    getLogoSrc() {
-      return require("@/assets/img/logo.jpg");
-    }
   },
 
   methods: {

@@ -1,13 +1,16 @@
 <template>
-  <div class="topic-item-container">
+  <div
+    :class="
+      isSpread
+        ? 'topic-item-container topic-item-container-spread'
+        : 'topic-item-container'
+    "
+  >
     <div class="content-desc">
-      <label style="font-size: 16px;">{{ topicItem.title }}</label>
-      <div>
-        <span class="tag">{{ topicItem.tag }}</span>
-        <label style="margin-left: 10px; color: #797979;">{{
-          topicItem.time
-        }}</label>
-      </div>
+      <label style="font-size: 16px; ">{{ topicItem.title }}</label>
+      <label style="margin-left: 10px; color: #797979;">{{
+        topicItem.time
+      }}</label>
     </div>
     <div
       :class="isSpread ? 'topic-content-spread' : 'content'"

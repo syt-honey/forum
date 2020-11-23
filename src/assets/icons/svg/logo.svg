@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="57px" height="19px" viewBox="0 0 57 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>logo</title>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="logo">
+            <text id="Chathub" font-family="Apple-Chancery, Apple Chancery" font-size="14" font-weight="normal" line-spacing="14" fill="#4F8BEE">
+                <tspan x="0" y="16">Chathub</tspan>
+            </text>
+            <polygon id="矩形" fill-opacity="0" fill="#D8D8D8" points="0 0 57 0 57 19 0 19"></polygon>
+        </g>
+    </g>
+</svg>
