@@ -17,9 +17,8 @@ export default {
   components: {
     TopicItem
   },
-  data() {
+  setup() {
     return {
-      msg: "main-content",
       topicList: [
         {
           title: "特斯拉在合肥成立新公司",
@@ -58,7 +57,7 @@ export default {
           content: `11 月 12 日，特斯拉汽车销售服务（合肥）有限公司成立，注册资本 100 万，法定代表人为朱晓彤，注册地址为安徽省合肥市肥东县肥东经济开发区，经营范围包括新能源汽车整车销售，电动汽车充电基础设施运营等. 11 月 14 日，该公司发生主要人员变更，朱晓彤出任董事长兼总经理，DAVID JON FEINSTEIN、张静出任董事，雷玉霞任监事。同时，新增股东特斯拉汽车香港有限公司，持股比例 100%。朱晓彤出任董事长兼总经理，DAVID JON FEINSTEIN、张静出任董事，雷玉霞任监事。同时，新增股东特斯拉汽车香港有限公司，持股比例 100%。`
         }
       ]
-    };
+    }
   }
 };
 </script>

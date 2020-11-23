@@ -9,16 +9,17 @@
         }}</label>
       </div>
     </div>
-    <div :class="isSpread ? 'topic-content-spread' : 'content'">
+    <div
+      :class="isSpread ? 'topic-content-spread' : 'content'"
+      @click="spreadContent()"
+    >
       <p>{{ topicItem.content }}</p>
-    </div>
-    <div @click="spreadContent" class="spread topic-spread">
-      {{ isSpread ? "点击收起" : "点击展开" }}
     </div>
   </div>
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   name: "TopicItem",
   props: {
@@ -28,14 +29,17 @@ export default {
     }
   },
 
-  data() {
+  setup() {
+    // 初始化 isSpread 值
+    let isSpread = ref(false);
+
     return {
-      isSpread: false
+      isSpread
     };
   },
 
   methods: {
-    // 点击收缩内容
+    // 点击收缩内容，改变收缩状态
     spreadContent() {
       this.isSpread = !this.isSpread;
     }

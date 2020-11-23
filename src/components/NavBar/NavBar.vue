@@ -16,15 +16,18 @@
 </template>
 
 <script>
+import { ref } from "vue";
 export default {
   name: "NavBar",
-  data() {
+  setup() {
+    let inputText = ref("");
+
     return {
       user: {
         name: "Leooel",
         icon: "user"
       },
-      inputText: ""
+      inputText
     };
   },
 

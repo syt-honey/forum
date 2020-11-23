@@ -1,11 +1,15 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Index from "../views/Index.vue";
 
 const routes = [
   {
     path: "/",
     name: "Index",
-    component: Index
+    component: () => import("@/views/Index")
+  },
+  {
+    path: "/publish",
+    name: "Publish",
+    component: () => import("@/views/Publish/Index")
   }
 ];
 
