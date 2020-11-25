@@ -1,16 +1,20 @@
 <template>
   <div class="nav-bar-container">
     <div class="nav-bar-content">
-      <svg-icon icon-class="logo" class-name="svg-icon-logo" />
+      <svg-icon
+        icon-class="logo"
+        class-name="svg-icon-logo"
+        @click="goToHome"
+      />
       <div class="flex-center-item search-and-user-info">
-<!--        TODO 先自定义UI，之后再考虑写UI库-->
-        <div class="flex-center-item" style="position: relative;">
-          <div class="input-animation">
-            <input v-model="inputText" type="text" placeholder="搜索主题" />
-            <span></span>
-          </div>
-          <svg-icon icon-class="search" />
+        <div class="input-animation">
+          <ch-input
+            v-model="inputText"
+            placeholder="搜索主题"
+          ></ch-input>
+          <span></span>
         </div>
+        <svg-icon icon-class="search" />
       </div>
     </div>
   </div>

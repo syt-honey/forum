@@ -5,11 +5,6 @@ const routes = [
     path: "/",
     name: "Index",
     component: () => import("@/views/Index")
-  },
-  {
-    path: "/publish",
-    name: "Publish",
-    component: () => import("@/views/Publish/Index")
   }
 ];
 

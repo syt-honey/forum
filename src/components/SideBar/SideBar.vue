@@ -1,6 +1,6 @@
 <template>
   <div class="side-bar-container">
-    <button class="publish-button" @click="publishTopic">发表主题</button>
+    <ch-button class="publish-button" @click="publishTopic">发表主题</ch-button>
     <div class="topic-container">
       <div
         class="topic-item"
@@ -8,11 +8,11 @@
         :key="index"
         @click="findTopics(topic)"
       >
-        <svg-icon
-          class-name="svg-icon-topic"
-          :icon-class="iconList[index]"
-        ></svg-icon>
-        <span style="margin-left: 10px;">{{ topic }}</span>
+        <!--        <svg-icon-->
+        <!--          class-name="svg-icon-topic"-->
+        <!--          :icon-class="iconList[index]"-->
+        <!--        ></svg-icon>-->
+        <span>{{ topic }}</span>
       </div>
     </div>
   </div>
@@ -21,17 +21,21 @@
 <script>
 export default {
   name: "SideBar",
-  setup() {
+  setup(props, context) {
+    const publishEvent = () => {
+      context.emit("publish-topic");
+    };
     return {
       topicList: ["全部主题", "精华主题", "文件主题", "图片主题"],
-      iconList: ["all-topics", "essence-topic", "file-topic", "image-topic"]
+      iconList: ["all-topics", "essence-topic", "file-topic", "image-topic"],
+      publishEvent
     };
   },
 
   methods: {
     publishTopic() {
-      // 发表主题
-      this.$router.push({ path: "/publish" });
+      // 上传父组件，发表主题
+      this.publishEvent();
     },
     findTopics(topic) {
       // 进入到不同的主题

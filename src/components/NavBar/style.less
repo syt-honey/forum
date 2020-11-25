@@ -16,21 +16,25 @@
 .input-animation {
   position: relative;
   display: inline-block;
-}
 
-input ~ span {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 1px;
-  background-color: #DDDFE6;
-  transform: scaleX(0);
-  transform-origin: right center;
-  transition: transform 0.3s ease-in-out;
-}
+  /deep/ .ch-input {
+    border: none;
+  }
 
-input:focus ~ span {
-  transform: scaleX(1);
-  transform-origin: left center;
+  input ~ span {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1px;
+    background-color: #DDDFE6;
+    transform: scaleX(0);
+    transform-origin: right center;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  input:focus ~ span {
+    transform: scaleX(1);
+    transform-origin: left center;
+  }
 }
