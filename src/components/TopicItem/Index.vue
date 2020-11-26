@@ -26,6 +26,7 @@
 import { ref } from "vue";
 export default {
   name: "TopicItem",
+
   props: {
     topicItem: {
       type: Object,

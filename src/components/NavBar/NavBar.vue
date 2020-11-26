@@ -8,10 +8,7 @@
       />
       <div class="flex-center-item search-and-user-info">
         <div class="input-animation">
-          <ch-input
-            v-model="inputText"
-            placeholder="搜索主题"
-          ></ch-input>
+          <ch-input v-model="inputText" placeholder="搜索主题"></ch-input>
           <span></span>
         </div>
         <svg-icon icon-class="search" />
@@ -24,6 +21,7 @@
 import { ref } from "vue";
 export default {
   name: "NavBar",
+
   setup() {
     let inputText = ref("");
 

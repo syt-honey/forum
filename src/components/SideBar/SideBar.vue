@@ -21,6 +21,7 @@
 <script>
 export default {
   name: "SideBar",
+
   setup(props, context) {
     const publishEvent = () => {
       context.emit("publish-topic");

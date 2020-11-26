@@ -1,29 +1,30 @@
 <template>
+  <!--  TODO 控制输入字数-->
   <!--      可以通过父组件传入参数的方式修改该变量名称-->
-  <template v-if="type === 'text'">
-    <input
-        class="ch-input"
-        :value="modelValue"
-        @input="handleInput"
-        :type="type"
-        :placeholder="placeholder"
-    >
-  </template>
-<!--  <template v-if="type === 'textarea'">-->
-<!--    <textarea-->
-<!--        class="ch-input"-->
-<!--        :value="modelValue"-->
-<!--        @input="handleInput"-->
-<!--        :type="type"-->
-<!--        :placeholder="placeholder"-->
-<!--    />-->
-<!--  </template>-->
+  <input
+    v-if="type === 'text'"
+    class="ch-input"
+    :value="modelValue"
+    @input="handleInput"
+    :type="type"
+    :placeholder="placeholder"
+  />
+
+  <textarea
+    v-if="type === 'textarea'"
+    class="ch-input"
+    :value="modelValue"
+    @input="handleInput"
+    :type="type"
+    :placeholder="placeholder"
+  />
 </template>
 
 <script>
 export default {
   // 自定义 Input UI
   name: "ChInput",
+
   props: {
     modelValue: {
       type: [String, Number],
@@ -41,12 +42,12 @@ export default {
 
   setup(props, context) {
     // 处理输入
-    const inputEvent = (val) => {
-      context.emit('update:modelValue', val);
-    }
+    const inputEvent = val => {
+      context.emit("update:modelValue", val);
+    };
     return {
       inputEvent
-    }
+    };
   },
 
   methods: {

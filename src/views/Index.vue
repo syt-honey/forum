@@ -6,16 +6,26 @@
       <main-content class="main-content"></main-content>
     </div>
   </div>
-  <!--    v-if="showPublishDialog"-->
+
   <ch-dialog
+    v-if="showPublishDialog"
     @hideDialog="showPublishDialog = false"
     @confirmDialog="confirmDialog"
     title="发表主题"
     confirmText="发布"
   >
-    <ch-input v-model="test" class="input-topic-title" placeholder="请输入话题名称"></ch-input>
-<!--    <ch-input v-model="topic.title" class="input-topic-title" placeholder="请输入话题名称"></ch-input>-->
-<!--    <ch-input v-model="topic.content" class="input-topic-content" type="textarea" placeholder="请输入内容"></ch-input>-->
+    <ch-input
+      v-model="topic.title"
+      class="input-topic-title"
+      placeholder="请输入话题名称"
+    ></ch-input>
+    <!--    TODO 限制输入高度-->
+    <ch-input
+      v-model="topic.content"
+      class="input-topic-content"
+      type="textarea"
+      placeholder="请输入内容"
+    ></ch-input>
   </ch-dialog>
 </template>
 
@@ -25,7 +35,8 @@ import SideBar from "@/components/SideBar/SideBar";
 import MainContent from "@/views/Home/Index";
 import { ref } from "vue";
 export default {
-  name: "Home",
+  name: "Index",
+
   components: {
     NavBar,
     SideBar,
@@ -38,18 +49,13 @@ export default {
       title: "",
       content: ""
     });
-    let test = ref("");
     return {
       showPublishDialog,
-      topic,
-      test
+      topic
     };
   },
 
   methods: {
-    update (event) {
-      console.log(event.target.value);
-    },
     publishTopic() {
       this.showPublishDialog = true;
     },
@@ -90,5 +96,4 @@ export default {
   padding-bottom: 5px;
   border: none;
 }
-
 </style>

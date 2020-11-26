@@ -13,9 +13,11 @@
 import TopicItem from "@/components/TopicItem/Index";
 export default {
   name: "Home",
+
   components: {
     TopicItem
   },
+
   setup() {
     return {
       topicList: [

@@ -8,8 +8,19 @@ input {
 }
 
 /* webkit内核的浏览器，如谷歌 */
-input::-webkit-input-placeholder{
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder
+{
   color: #DDDFE6;
   opacity:1;
   font-weight: normal;
+}
+
+textarea {
+  width: 200px;
+  padding: 7px;
+  border: 1px solid #F5F7FF;
+  border-radius: 4px;
+  outline: none;
+  resize:none;
 }
