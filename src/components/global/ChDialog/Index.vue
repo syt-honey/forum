@@ -15,6 +15,7 @@
 
 <script>
 import ChButton from "@/components/global/ChButton/Index";
+import { ref } from 'vue';
 export default {
   // 自定义 Dialog UI
   name: "ChDialog",

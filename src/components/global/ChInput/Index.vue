@@ -4,20 +4,20 @@
     <input
         class="ch-input"
         :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
+        @input="handleInput"
         :type="type"
         :placeholder="placeholder"
     >
   </template>
-  <template v-if="type === 'textarea'">
-    <textarea
-        class="ch-input"
-        :value="modelValue"
-        @input="$emit('update:modelValue', $event.target.value)"
-        :type="type"
-        :placeholder="placeholder"
-    />
-  </template>
+<!--  <template v-if="type === 'textarea'">-->
+<!--    <textarea-->
+<!--        class="ch-input"-->
+<!--        :value="modelValue"-->
+<!--        @input="handleInput"-->
+<!--        :type="type"-->
+<!--        :placeholder="placeholder"-->
+<!--    />-->
+<!--  </template>-->
 </template>
 
 <script>
@@ -39,7 +39,21 @@ export default {
     }
   },
 
-  setup() {}
+  setup(props, context) {
+    // 处理输入
+    const inputEvent = (val) => {
+      context.emit('update:modelValue', val);
+    }
+    return {
+      inputEvent
+    }
+  },
+
+  methods: {
+    handleInput(event) {
+      this.inputEvent(event.target.value);
+    }
+  }
 };
 </script>
 

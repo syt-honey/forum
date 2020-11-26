@@ -13,8 +13,8 @@
     title="发表主题"
     confirmText="发布"
   >
-<!--    <ch-input v-model="test" class="input-topic-title" placeholder="请输入话题名称"></ch-input>-->
-    <ch-input v-model="topic.title" class="input-topic-title" placeholder="请输入话题名称"></ch-input>
+    <ch-input v-model="test" class="input-topic-title" placeholder="请输入话题名称"></ch-input>
+<!--    <ch-input v-model="topic.title" class="input-topic-title" placeholder="请输入话题名称"></ch-input>-->
 <!--    <ch-input v-model="topic.content" class="input-topic-content" type="textarea" placeholder="请输入内容"></ch-input>-->
   </ch-dialog>
 </template>
@@ -47,6 +47,9 @@ export default {
   },
 
   methods: {
+    update (event) {
+      console.log(event.target.value);
+    },
     publishTopic() {
       this.showPublishDialog = true;
     },
