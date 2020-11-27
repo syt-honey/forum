@@ -1,0 +1,35 @@
+.home {
+  .wh(100%, 100%);
+
+  .main-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 40px auto;
+
+    .side-bar {
+      width: 170px;
+    }
+
+    .main-content {
+      .wh(calc(100% - 170px), calc(100vh - 120px));
+      padding-right: 170px;
+    }
+  }
+}
+
+::v-deep .ch-input__area,
+::v-deep .ch-input__input {
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 5px;
+  border: none;
+}
+
+::v-deep .input-topic-title .ch-input__input {
+  font-size: 18px;
+}
+
+::v-deep .input-topic-content .ch-input__area {
+  font-size: 14px;
+}

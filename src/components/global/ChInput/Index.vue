@@ -1,23 +1,25 @@
 <template>
   <!--  TODO 控制输入字数-->
   <!--      可以通过父组件传入参数的方式修改该变量名称-->
-  <input
-    v-if="type === 'text'"
-    class="ch-input"
-    :value="modelValue"
-    @input="handleInput"
-    :type="type"
-    :placeholder="placeholder"
-  />
+  <div>
+    <input
+        v-if="type === 'text'"
+        class="ch-input__input"
+        :value="modelValue"
+        @input="handleInput"
+        :type="type"
+        :placeholder="placeholder"
+    />
 
-  <textarea
-    v-if="type === 'textarea'"
-    class="ch-input"
-    :value="modelValue"
-    @input="handleInput"
-    :type="type"
-    :placeholder="placeholder"
-  />
+    <textarea
+        v-if="type === 'textarea'"
+        class="ch-input__area"
+        :value="modelValue"
+        @input="handleInput"
+        :type="type"
+        :placeholder="placeholder"
+    />
+  </div>
 </template>
 
 <script>

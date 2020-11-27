@@ -69,31 +69,5 @@ export default {
 
 <style lang="less" scoped>
 @import "~@/assets/style/index.less";
-
-.home {
-  .wh(100%, 100%);
-
-  .main-container {
-    display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin: 40px auto;
-
-    .side-bar {
-      width: 170px;
-    }
-
-    .main-content {
-      .wh(calc(100% - 170px), calc(100vh - 120px));
-      padding-right: 170px;
-    }
-  }
-}
-
-/deep/ .ch-input {
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 5px;
-  border: none;
-}
+@import "./style";
 </style>

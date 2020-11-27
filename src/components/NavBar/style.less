@@ -17,11 +17,11 @@
   position: relative;
   display: inline-block;
 
-  /deep/ .ch-input {
+  ::v-deep .ch-input__input {
     border: none;
   }
 
-  input ~ span {
+  div ~ span {
     position: absolute;
     left: 0;
     right: 0;
@@ -33,7 +33,7 @@
     transition: transform 0.3s ease-in-out;
   }
 
-  input:focus ~ span {
+  div:focus-within ~ span {
     transform: scaleX(1);
     transform-origin: left center;
   }
