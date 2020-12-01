@@ -7,11 +7,12 @@
     "
   >
     <div class="content-desc">
-      <!--   TODO 会各自换行   -->
-      <label style="font-size: 16px; ">{{ topicItem.title }}</label>
-      <label style="margin-left: 10px; color: #797979;">{{
-        topicItem.time
-      }}</label>
+      <div>
+        <span style="font-size: 16px; ">{{ topicItem.title }}</span>
+        <span style="font-size: 14px; margin-left: 10px; color: #797979;">{{
+          topicItem.time
+        }}</span>
+      </div>
     </div>
     <div
       :class="isSpread ? 'topic-content-spread' : 'content'"
