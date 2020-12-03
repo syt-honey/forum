@@ -33,7 +33,7 @@
 import NavBar from "@/components/NavBar/NavBar";
 import SideBar from "@/components/SideBar/SideBar";
 import MainContent from "@/views/Home/Index";
-import { ref } from "vue";
+import { ref, getCurrentInstance } from "vue";
 export default {
   name: "Index",
 
@@ -44,6 +44,13 @@ export default {
   },
 
   setup() {
+    const ctx = getCurrentInstance().appContext.config.globalProperties;
+    const getTopic = () => {
+      ctx.$service.publishTopic({}).then(res => {
+        console.log(res);
+      });
+    };
+    getTopic();
     let showPublishDialog = ref(false);
     let topic = ref({
       title: "",

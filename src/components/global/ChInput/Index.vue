@@ -3,21 +3,21 @@
   <!--      可以通过父组件传入参数的方式修改该变量名称-->
   <div>
     <input
-        v-if="type === 'text'"
-        class="ch-input__input"
-        :value="modelValue"
-        @input="handleInput"
-        :type="type"
-        :placeholder="placeholder"
+      v-if="type === 'text'"
+      class="ch-input__input"
+      :value="modelValue"
+      @input="handleInput"
+      :type="type"
+      :placeholder="placeholder"
     />
 
     <textarea
-        v-if="type === 'textarea'"
-        class="ch-input__area"
-        :value="modelValue"
-        @input="handleInput"
-        :type="type"
-        :placeholder="placeholder"
+      v-if="type === 'textarea'"
+      class="ch-input__area"
+      :value="modelValue"
+      @input="handleInput"
+      :type="type"
+      :placeholder="placeholder"
     />
   </div>
 </template>

@@ -1,6 +1,17 @@
 "use strict";
 const path = require("path");
 module.exports = {
+  devServer: {
+    proxy: {
+      "/api": {
+        target: "http://127.0.0.1:3000",
+        changeOrigin: true,
+        pathRewrite: {
+          "^/api/": ""
+        }
+      }
+    }
+  },
   chainWebpack: config => {
     const svgRule = config.module.rule("svg");
     // 清除已有的所有 loader
