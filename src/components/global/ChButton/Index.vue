@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="$emit('click')"><slot /></button>
+  <button type="button" @click="handleClick"><slot /></button>
 </template>
 
 <script>
@@ -7,8 +7,13 @@ export default {
   // 自定义 Button UI
   name: "ChButton",
 
-  setup() {
-    return {};
+  setup(props, context) {
+    const handleClick = e => {
+      context.emit("click", e);
+    };
+    return {
+      handleClick
+    };
   }
 };
 </script>

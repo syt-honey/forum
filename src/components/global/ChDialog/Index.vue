@@ -12,9 +12,7 @@
         <slot></slot>
       </div>
       <div class="dialog-footer">
-        <ch-button class="publish-btn" @click="submit">{{
-          confirmText
-        }}</ch-button>
+        <slot name="footer"></slot>
       </div>
     </div>
   </div>
@@ -29,14 +27,6 @@ export default {
     title: {
       type: String,
       default: () => "提示"
-    },
-    cancelText: {
-      type: String,
-      default: () => "取消"
-    },
-    confirmText: {
-      type: String,
-      default: () => "确定"
     }
   },
 
@@ -44,12 +34,8 @@ export default {
     const hideDialog = () => {
       context.emit("hide-dialog");
     };
-    const confirmDialog = () => {
-      context.emit("confirm-dialog");
-    };
     return {
-      hideDialog,
-      confirmDialog
+      hideDialog
     };
   },
 
@@ -57,10 +43,6 @@ export default {
     dialogClose() {
       // 关闭 dialog
       this.hideDialog();
-    },
-    submit() {
-      // 提交表单
-      this.confirmDialog();
     }
   }
 };

@@ -1,6 +1,5 @@
 .topic-item-container {
-  margin-bottom: 25px;
-  padding: 12px 15px;
+  padding: 20px 15px;
   border-bottom: 1px solid #F5F7FF;
 
   .content-desc {
@@ -14,29 +13,32 @@
     line-height: 25px;
   }
 
+  // TODO 动画没有生效
   .content {
+    max-height: 100px;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
+    transition: max-height .3s;
     color: #797979;
     cursor: pointer;
     :hover {
       color: #414141;
+      cursor: pointer;
     }
   }
 
   // 内容展出后样式
   .topic-content-spread {
-    overflow: auto;
+    max-height: 500px;
     cursor: pointer;
   }
 }
 
 .topic-item-container-spread {
-  padding: 12px 15px;
+  padding: 20px 15px;
   border-radius: 16px;
   box-shadow: 0 4px 18px -4px rgba(0,0,0,.1);
-//  TODO 展开动画
 }

@@ -16,7 +16,6 @@
       class="ch-input__area"
       :value="modelValue"
       @input="handleInput"
-      :type="type"
       :placeholder="placeholder"
     />
   </div>

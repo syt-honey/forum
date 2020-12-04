@@ -10,7 +10,7 @@
       <div>
         <span style="font-size: 16px; ">{{ topicItem.title }}</span>
         <span style="font-size: 14px; margin-left: 10px; color: #797979;">{{
-          topicItem.time
+          formatDate(topicItem.createDate)
         }}</span>
       </div>
     </div>
@@ -25,6 +25,7 @@
 
 <script>
 import { ref } from "vue";
+import dayjs from "dayjs";
 export default {
   name: "TopicItem",
 
@@ -42,6 +43,15 @@ export default {
     return {
       isSpread
     };
+  },
+
+  computed: {
+    formatDate() {
+      return function(value) {
+        // TODO 添加规则
+        return dayjs(value).format("MM月DD日");
+      };
+    }
   },
 
   methods: {
