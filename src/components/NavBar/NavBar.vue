@@ -11,7 +11,7 @@
           <ch-input v-model="inputText" placeholder="搜索主题"></ch-input>
           <span></span>
         </div>
-        <svg-icon icon-class="search" />
+        <svg-icon icon-class="ch-search" />
       </div>
     </div>
   </div>

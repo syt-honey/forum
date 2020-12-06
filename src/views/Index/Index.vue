@@ -3,7 +3,16 @@
     <nav-bar class="nav-bar"></nav-bar>
     <div class="main-container">
       <side-bar @publishTopic="openDialog()" class="side-bar"></side-bar>
-      <main-content :topic-list="topicList" class="main-content"></main-content>
+      <template v-if="loading">
+        <!--    TODO 实现 loading 指令-->
+        <ch-loading :visible="loading"></ch-loading>
+      </template>
+      <template v-else>
+        <main-content
+          :topic-list="topicList"
+          class="main-content"
+        ></main-content>
+      </template>
     </div>
   </div>
 
@@ -56,6 +65,7 @@ export default {
       content: ""
     });
     let topicList = ref([]);
+    let loading = ref(false);
     let state = ref({
       currentFocusTopic: ctx.$store._state.data.topic.currentFocusTopic
     });
@@ -89,6 +99,7 @@ export default {
      * 获取主题接口
      */
     const getTopicInterface = () => {
+      loading.value = true;
       const data = {
         type:
           state.value.currentFocusTopic === "all"
@@ -96,6 +107,7 @@ export default {
             : state.value.currentFocusTopic
       };
       ctx.$service.getTopic({ data }).then(res => {
+        loading.value = false;
         topicList.value = res.data.list;
       });
     };
@@ -105,12 +117,14 @@ export default {
      */
     const publishTopicInterface = () => {
       // TODO 需要添加 loading
+      loading.value = true;
       topic.value.type = state.value.currentFocusTopic;
       const data = topic.value;
       ctx.$service
         .publishTopic({ data })
         .then(() => {
           // TODO 添加 loading 及 message 提示
+          loading.value = false;
           getTopicInterface();
         })
         .catch(err => {
@@ -127,7 +141,8 @@ export default {
       getTopicInterface,
       publishTopicInterface,
       confirmDialog,
-      openDialog
+      openDialog,
+      loading
     };
   },
 

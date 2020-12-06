@@ -2,7 +2,7 @@
   <div class="dialog-mask">
     <div class="dialog-container" ref="dialogWrapper">
       <svg-icon
-        icon-class="cancel"
+        icon-class="ch-cancel"
         class="cancel-icon"
         @click="hideDialog"
       ></svg-icon>

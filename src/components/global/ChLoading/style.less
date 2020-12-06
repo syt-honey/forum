@@ -1,0 +1,43 @@
+.is-fullscreen {
+  width: 100vw;
+  height: 100vh;
+}
+
+.ch-loading-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow-y: hidden;
+  z-index: 99;
+  //background: rgba(0, 0, 0, 0.8);
+}
+
+.ch-loading-mask .ch-loading-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  color: #4f8bee;
+
+  .ch-loading-circle {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    animation: loading-rotate linear 1.5s infinite;
+
+    @keyframes loading-rotate {
+      0% {
+        transform: rotate(0);
+      }
+      100% {
+        transform: rotate(1turn);
+      }
+    }
+  }
+}
