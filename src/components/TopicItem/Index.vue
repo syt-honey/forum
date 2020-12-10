@@ -8,7 +8,7 @@
   >
     <div class="content-desc">
       <div>
-        <span style="font-size: 16px; ">{{ topicItem.title }}</span>
+        <span style="font-size: 16px; ">{{ topicItem.title.trim() }}</span>
         <span style="font-size: 14px; margin-left: 10px; color: #797979;">{{
           formatDate(topicItem.createDate)
         }}</span>
@@ -18,7 +18,7 @@
       :class="isSpread ? 'topic-content-spread' : 'content'"
       @click="spreadContent()"
     >
-      <p>{{ topicItem.content }}</p>
+      <p>{{ topicItem.content.trim() }}</p>
     </div>
   </div>
 </template>
