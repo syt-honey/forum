@@ -1,0 +1,36 @@
+.ch-message {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px;
+  border-radius: 4px;
+  background-color: var(--message-bgColor);
+  border-color: var(--message-boderColor);
+  color: var(--message-color);
+
+  .ch-message-container {
+    display: flex;
+    justify-content: space-between;
+
+    p {
+      font-size: 14px;
+      line-height: 25px;
+      min-width: 300px;
+    }
+  }
+
+  .icon {
+    width: 14px;
+    cursor: pointer;
+  }
+
+  .tip-icon {
+    width: 18px;
+    margin-right: 10px;
+  }
+
+  .cancel-icon {
+    margin-left: 5px;
+  }
+}

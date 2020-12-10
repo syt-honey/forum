@@ -16,6 +16,12 @@
     </div>
   </div>
 
+  <!--  <ch-message-->
+  <!--    type="success"-->
+  <!--    :showClose="true"-->
+  <!--    :message="messageText"-->
+  <!--  ></ch-message>-->
+
   <ch-dialog
     v-if="showPublishDialog"
     @hideDialog="showPublishDialog = false"
@@ -60,6 +66,8 @@ export default {
   setup() {
     const ctx = getCurrentInstance().appContext.config.globalProperties;
     let showPublishDialog = ref(false);
+    let showMessage = ref(true);
+    let messageText = ref("这是一条成功提示");
     let topic = ref({
       title: "",
       content: ""
@@ -142,7 +150,9 @@ export default {
       publishTopicInterface,
       confirmDialog,
       openDialog,
-      loading
+      loading,
+      showMessage,
+      messageText
     };
   },
 
