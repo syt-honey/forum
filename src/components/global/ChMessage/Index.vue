@@ -8,6 +8,7 @@
   >
     <div class="ch-message-container">
       <div>
+        <!--        TODO 组件中无法解析-->
         <svg-icon
           :icon-class="colorMap[type] && colorMap[type].iconName"
           class="icon tip-icon"
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, nextTick } from "vue";
 export default {
   name: "ChMessage",
 
@@ -71,7 +72,7 @@ export default {
         iconName: "ch-warning"
       },
       // 危险
-      danger: {
+      error: {
         bgColor: "#fef0f0",
         borderColor: "#fde2e2",
         color: "#f56c6c",
@@ -80,7 +81,9 @@ export default {
     };
     onMounted(() => {
       // 设置主题色
-      _setMessageBg();
+      nextTick(() => {
+        _setMessageBg();
+      });
     });
 
     const _setMessageBg = () => {

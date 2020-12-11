@@ -25,7 +25,7 @@
     </div>
     <the-footer></the-footer>
   </div>
-
+  <!-- 组件形式 -->
   <!--  <ch-message-->
   <!--    type="success"-->
   <!--    :showClose="true"-->
@@ -64,6 +64,7 @@ import SideBar from "@/components/SideBar/SideBar";
 import MainContent from "@/views/Home/Index";
 import TheFooter from "@/components/Footer/Index";
 import { ref, getCurrentInstance, onMounted } from "vue";
+import { RES_CODE } from "@/utils/constant";
 import { mapState } from "vuex";
 export default {
   name: "Index",
@@ -129,10 +130,19 @@ export default {
             ? ""
             : state.value.currentFocusTopic
       };
-      ctx.$service.getTopic({ data }).then(res => {
-        loading.value = false;
-        topicList.value = res.data.list;
-      });
+      ctx.$service
+        .getTopic({ data })
+        .then(res => {
+          loading.value = false;
+          topicList.value = res.data.list;
+        })
+        .catch(err => {
+          ctx.$message({
+            message: `获取主题失败：${err}`,
+            type: "error"
+          });
+          loading.value = false;
+        });
     };
 
     /**
@@ -143,13 +153,27 @@ export default {
       const data = topic.value;
       ctx.$service
         .publishTopic({ data })
-        .then(() => {
-          // TODO 添加 loading 及 message 提示
+        .then(res => {
           loading.value = false;
-          getTopicInterface();
+          if (res.code === RES_CODE.SUCCESS) {
+            ctx.$message({
+              message: "发布成功",
+              type: "success"
+            });
+            getTopicInterface();
+          } else if (res.code === RES_CODE.FAIL) {
+            ctx.$message({
+              message: `发布失败：${res.msg}`,
+              type: "error"
+            });
+          }
         })
         .catch(err => {
-          console.log(err);
+          ctx.$message({
+            message: `发布失败：${err}`,
+            type: "error"
+          });
+          loading.value = false;
         });
     };
 
