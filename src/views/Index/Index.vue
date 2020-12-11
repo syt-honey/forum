@@ -14,6 +14,7 @@
         ></main-content>
       </template>
     </div>
+    <the-footer></the-footer>
   </div>
 
   <!--  <ch-message-->
@@ -52,6 +53,7 @@
 import NavBar from "@/components/NavBar/NavBar";
 import SideBar from "@/components/SideBar/SideBar";
 import MainContent from "@/views/Home/Index";
+import TheFooter from "@/components/Footer/Index";
 import { ref, getCurrentInstance, onMounted } from "vue";
 import { mapState } from "vuex";
 export default {
@@ -60,7 +62,8 @@ export default {
   components: {
     NavBar,
     SideBar,
-    MainContent
+    MainContent,
+    TheFooter
   },
 
   setup() {
@@ -126,7 +129,6 @@ export default {
     const publishTopicInterface = () => {
       // TODO 需要添加 loading
       loading.value = true;
-      topic.value.type = state.value.currentFocusTopic;
       const data = topic.value;
       ctx.$service
         .publishTopic({ data })
