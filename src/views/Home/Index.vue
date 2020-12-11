@@ -1,20 +1,10 @@
 <template>
   <div class="content-container">
-    <template v-if="topicList.length > 0">
-      <topic-item
-        v-for="(topic, index) of topicList"
-        :topic-item="topic"
-        :key="index"
-      ></topic-item>
-    </template>
-    <div v-else class="placeholder">
-      <img
-        src="@/assets/img/nodata.png"
-        alt="no-data"
-        class="placeholder-img"
-      />
-      <span class="placeholder-text">暂无主题</span>
-    </div>
+    <topic-item
+      v-for="(topic, index) of topicList"
+      :topic-item="topic"
+      :key="index"
+    ></topic-item>
     <!--      TODO 自定义上拉加载-->
   </div>
 </template>

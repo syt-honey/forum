@@ -9,9 +9,18 @@
       </template>
       <template v-else>
         <main-content
+          v-if="topicList.length > 0"
           :topic-list="topicList"
           class="main-content"
         ></main-content>
+        <div v-else class="placeholder">
+          <img
+            src="@/assets/img/nodata.png"
+            alt="no-data"
+            class="placeholder-img"
+          />
+          <span class="placeholder-text">暂无主题</span>
+        </div>
       </template>
     </div>
     <the-footer></the-footer>
