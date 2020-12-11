@@ -25,7 +25,7 @@
 
   <ch-dialog
     v-if="showPublishDialog"
-    @hideDialog="showPublishDialog = false"
+    @hideDialog="hideDialog"
     title="发表主题"
     confirmText="发布"
   >
@@ -90,8 +90,11 @@ export default {
      */
     const openDialog = () => {
       showPublishDialog.value = true;
-      topic.value.title = "";
-      topic.value.content = "";
+    };
+
+    const hideDialog = () => {
+      // TODO 添加二次确认，点击确认后清除输入内容  topic.value.title = ""; topic.value.content = "";
+      showPublishDialog.value = false;
     };
 
     /**
@@ -127,7 +130,6 @@ export default {
      * 发布主题接口
      */
     const publishTopicInterface = () => {
-      // TODO 需要添加 loading
       loading.value = true;
       const data = topic.value;
       ctx.$service
@@ -148,6 +150,7 @@ export default {
       showPublishDialog,
       topic,
       topicList,
+      hideDialog,
       getTopicInterface,
       publishTopicInterface,
       confirmDialog,

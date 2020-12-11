@@ -1,5 +1,5 @@
 <template>
-  <div class="dialog-mask">
+  <div class="dialog-mask" @click.self="handleWrapperClick">
     <div class="dialog-container" ref="dialogWrapper">
       <svg-icon
         icon-class="ch-cancel"
@@ -19,6 +19,7 @@
 </template>
 
 <script>
+import { toRefs } from "vue";
 export default {
   // 自定义 Dialog UI
   name: "ChDialog",
@@ -27,23 +28,26 @@ export default {
     title: {
       type: String,
       default: () => "提示"
+    },
+    closeOnClickModal: {
+      type: Boolean,
+      default: true
     }
   },
 
   setup(props, context) {
+    const { closeOnClickModal } = toRefs(props);
     const hideDialog = () => {
       context.emit("hide-dialog");
     };
-    return {
-      hideDialog
+    const handleWrapperClick = () => {
+      if (!closeOnClickModal) return;
+      hideDialog();
     };
-  },
-
-  methods: {
-    dialogClose() {
-      // 关闭 dialog
-      this.hideDialog();
-    }
+    return {
+      hideDialog,
+      handleWrapperClick
+    };
   }
 };
 </script>
