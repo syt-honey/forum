@@ -29,6 +29,7 @@
 <script>
 import { onMounted, ref, nextTick } from "vue";
 export default {
+  // TODO 多次渲染时颜色不会再次赋值
   name: "ChMessage",
 
   props: {

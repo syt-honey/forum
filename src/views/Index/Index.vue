@@ -114,8 +114,17 @@ export default {
       // 以下是暂时的解决方法。
       // TODO 如何控制事件捕获/事件冒泡来阻止事件被触发两次？
       if (showPublishDialog.value) {
+        // TODO 如果弹窗不消失，message 的字体颜色就会设置失败
         showPublishDialog.value = false;
-        publishTopicInterface();
+        if (!topic.value.title || !topic.value.content) {
+          ctx.$message({
+            message: "主题名称和内容不为空",
+            type: "error",
+            duration: 1000
+          });
+        } else {
+          publishTopicInterface();
+        }
       }
     };
 
