@@ -8,10 +8,8 @@
   >
     <div class="content-desc">
       <div>
-        <span style="font-size: 16px; ">{{ topicItem.title.trim() }}</span>
-        <span style="font-size: 14px; margin-left: 10px; color: #797979;">{{
-          formatDate(topicItem.createDate)
-        }}</span>
+        <span class="title">{{ topicItem.title.trim() }}</span>
+        <span class="time">{{ formatDate(topicItem.createDate) }}</span>
       </div>
     </div>
     <div
