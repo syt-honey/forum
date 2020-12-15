@@ -1,5 +1,5 @@
 <template>
-  <div class="border"></div>
+  <div class="ch-border"></div>
 </template>
 
 <script>

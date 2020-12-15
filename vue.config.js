@@ -1,11 +1,13 @@
 "use strict";
 const path = require("path");
 module.exports = {
+  publicPath: "/",
+  assetsDir: "static",
+  // publicPath: process.env.NODE_ENV === "production" ? "/home/forum/" : "/",
   devServer: {
     proxy: {
       "/api": {
         target: "http://121.196.109.76:3000/",
-        // target: "http://127.0.0.1:3000",
         changeOrigin: true,
         pathRewrite: {
           "^/api/": ""

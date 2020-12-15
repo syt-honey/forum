@@ -1,5 +1,5 @@
 <template>
-  <button type="button" @click="handleClick"><slot /></button>
+  <button type="button" class="ch-button" @click="handleClick"><slot /></button>
 </template>
 
 <script>

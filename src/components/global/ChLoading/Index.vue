@@ -4,7 +4,7 @@
     class="ch-loading-mask"
     :class="[customClass, { 'is-fullscreen': fullscreen }]"
   >
-    <div class="ch-loading-container">
+    <div class="ch-loading__wrap">
       <svg-icon icon-class="ch-loading" class="ch-loading-circle" />
       <p v-if="text">{{ text }}</p>
     </div>

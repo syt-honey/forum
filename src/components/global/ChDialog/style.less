@@ -1,8 +1,4 @@
-.horizontal-line {
-  margin: 0 20px;
-}
-
-.dialog-mask {
+.ch-dialog-mask {
   position: fixed;
   width: 100%;
   height: 100%;
@@ -12,7 +8,7 @@
   background: rgba(0, 0, 0, 0.4);
   box-sizing: border-box;
 
-  .dialog-container {
+  .ch-dialog__wrapper {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -21,7 +17,7 @@
     background: #fff;
     border-radius: 4px;
 
-    .cancel-icon {
+    .ch-cancel-icon {
       position: absolute;
       right: 20px;
       top: 10px;
@@ -30,19 +26,19 @@
       cursor: pointer;
     }
 
-    .dialog-header {
+    .ch-dialog__header {
       padding: 20px 20px 10px;
       line-height: 24px;
       font-size: 18px;
     }
 
-    .dialog-body {
+    .ch-dialog__body {
       display: flex;
       flex-direction: column;
       padding: 10px 20px;
     }
 
-    .dialog-footer {
+    .ch-dialog__footer {
       display: flex;
       justify-content: flex-end;
       padding: 10px 20px 20px;
@@ -50,4 +46,8 @@
       box-sizing: border-box;
     }
   }
+}
+
+.ch-horizontal-line {
+  margin: 0 20px;
 }

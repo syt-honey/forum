@@ -1,5 +1,5 @@
 // 重定义基础样式
-input {
+.ch-input--input {
   width: 200px;
   padding: 7px;
   border: 1px solid #F5F7FF;
@@ -8,16 +8,8 @@ input {
   font-family: PingFangSC-Regular, serif;
 }
 
-/* webkit内核的浏览器，如谷歌 */
-input::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder
-{
-  color: #DDDFE6;
-  opacity:1;
-  font-weight: normal;
-}
 
-textarea {
+.ch-input--area {
   width: 200px;
   height: 400px;
   padding: 7px;
@@ -26,4 +18,13 @@ textarea {
   outline: none;
   resize:none;
   font-family: PingFangSC-Regular, serif;
+}
+
+/* webkit内核的浏览器，如谷歌 */
+.ch-input--input::-webkit-input-placeholder,
+.ch-input--area::-webkit-input-placeholder
+{
+  color: #DDDFE6;
+  opacity:1;
+  font-weight: normal;
 }

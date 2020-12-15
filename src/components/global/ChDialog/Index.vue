@@ -1,17 +1,17 @@
 <template>
-  <div class="dialog-mask" @click.self="handleWrapperClick">
-    <div class="dialog-container" ref="dialogWrapper">
+  <div class="ch-dialog-mask" @click.self="handleWrapperClick">
+    <div class="ch-dialog__wrapper" ref="dialogWrapper">
       <svg-icon
         icon-class="ch-cancel"
-        class="cancel-icon"
+        class="ch-cancel-icon"
         @click="hideDialog"
       ></svg-icon>
-      <div class="dialog-header">{{ title }}</div>
-      <ch-border class="horizontal-line"></ch-border>
-      <div class="dialog-body">
+      <div class="ch-dialog__header">{{ title }}</div>
+      <ch-border class="ch-horizontal-line"></ch-border>
+      <div class="ch-dialog__body">
         <slot></slot>
       </div>
-      <div class="dialog-footer">
+      <div class="ch-dialog__footer">
         <slot name="footer"></slot>
       </div>
     </div>

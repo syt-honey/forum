@@ -6,11 +6,11 @@
     class="ch-message"
     :class="[customClass, `ch-message--${type}`]"
   >
-    <div class="ch-message-container">
+    <div class="ch-message__wrap">
       <div>
         <svg-icon
           :icon-class="iconMap[type] && iconMap[type].iconName"
-          class="icon tip-icon"
+          class="ch-icon ch-tip-icon"
         />
       </div>
       <p v-if="message">{{ message }}</p>
@@ -18,7 +18,7 @@
         <svg-icon
           @click="close"
           icon-class="ch-cancel"
-          class="icon cancel-icon"
+          class="ch-icon ch-cancel-icon"
         />
       </div>
     </div>
