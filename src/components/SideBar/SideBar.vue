@@ -1,6 +1,8 @@
 <template>
   <div class="side-bar-container">
-    <ch-button class="publish-button" @click="publishTopic">发表主题</ch-button>
+    <ch-button type="primary" class="publish-button" @click="publishTopic"
+      >发表主题</ch-button
+    >
     <div class="topic-container">
       <div
         class="topic-item"

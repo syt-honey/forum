@@ -2,6 +2,7 @@
   <div class="home">
     <nav-bar class="nav-bar"></nav-bar>
     <div class="main-container">
+      <!--      <ch-message-box></ch-message-box>-->
       <side-bar @publishTopic="openDialog()" class="side-bar"></side-bar>
       <template v-if="loading">
         <!--    TODO 实现 loading 指令-->
@@ -45,7 +46,7 @@
       placeholder="请输入内容"
     ></ch-input>
     <template v-slot:footer>
-      <ch-button class="publish-btn" @click="confirmDialog">
+      <ch-button class="publish-btn" type="primary" @click="confirmDialog">
         确定
       </ch-button>
     </template>
