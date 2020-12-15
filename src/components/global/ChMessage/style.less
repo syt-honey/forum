@@ -6,9 +6,6 @@
   z-index: 100;
   padding: 16px;
   border-radius: 4px;
-  background-color: var(--message-bgColor);
-  border-color: var(--message-boderColor);
-  color: var(--message-color);
 
   .ch-message-container {
     display: flex;
@@ -34,4 +31,23 @@
   .cancel-icon {
     margin-left: 5px;
   }
+}
+
+// 不同主题 message 样式
+.ch-message--error {
+  background-color: #fef0f0;
+  border-color: #fde2e2;
+  color: #f56c6c;
+}
+
+.ch-message--success {
+  background-color: #f0f9eb;
+  border-color: #e1f3d8;
+  color: #67c23a;
+}
+
+.ch-message--warning {
+  background-color: #fdf6ec;
+  border-color: #faecd8;
+  color: #e6a23c;
 }

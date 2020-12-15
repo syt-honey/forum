@@ -4,7 +4,7 @@
   <div>
     <input
       v-if="type === 'text'"
-      class="ch-input__input"
+      class="ch-input--input"
       :value="modelValue"
       @input="handleInput"
       :type="type"
@@ -13,7 +13,7 @@
 
     <textarea
       v-if="type === 'textarea'"
-      class="ch-input__area"
+      class="ch-input--area"
       :value="modelValue"
       @input="handleInput"
       :placeholder="placeholder"

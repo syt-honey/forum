@@ -4,13 +4,12 @@
     @mouseenter="handleMouseEnter"
     @mouseleave="handleMouseLeave"
     class="ch-message"
-    :class="[customClass]"
+    :class="[customClass, `ch-message--${type}`]"
   >
     <div class="ch-message-container">
       <div>
-        <!--        TODO 组件中无法解析-->
         <svg-icon
-          :icon-class="colorMap[type] && colorMap[type].iconName"
+          :icon-class="iconMap[type] && iconMap[type].iconName"
           class="icon tip-icon"
         />
       </div>
@@ -27,10 +26,14 @@
 </template>
 
 <script>
-import { onMounted, ref, nextTick } from "vue";
+import { ref } from "vue";
+import SvgIcon from "@/components/global/SvgIcon/Index";
 export default {
-  // TODO 多次渲染时颜色不会再次赋值
   name: "ChMessage",
+
+  components: {
+    SvgIcon
+  },
 
   props: {
     message: {
@@ -57,55 +60,19 @@ export default {
 
   setup(props) {
     // 弹窗主题
-    const colorMap = {
+    const iconMap = {
       // 成功
       success: {
-        bgColor: "#f0f9eb",
-        borderColor: "#e1f3d8",
-        color: "#67c23a",
         iconName: "ch-finished"
       },
       // 警告
       warning: {
-        bgColor: "#fdf6ec",
-        borderColor: "#faecd8",
-        color: "#e6a23c",
         iconName: "ch-warning"
       },
       // 危险
       error: {
-        bgColor: "#fef0f0",
-        borderColor: "#fde2e2",
-        color: "#f56c6c",
         iconName: "ch-danger"
       }
-    };
-    onMounted(() => {
-      // 设置主题色
-      nextTick(() => {
-        _setMessageBg();
-      });
-    });
-
-    const _setMessageBg = () => {
-      document
-        .getElementsByClassName("ch-message")[0]
-        .style.setProperty(
-          "--message-bgColor",
-          colorMap[props.type] && colorMap[props.type].bgColor
-        );
-      document
-        .getElementsByClassName("ch-message")[0]
-        .style.setProperty(
-          "--message-borderColor",
-          colorMap[props.type] && colorMap[props.type].borderColor
-        );
-      document
-        .getElementsByClassName("ch-message")[0]
-        .style.setProperty(
-          "--message-color",
-          colorMap[props.type] && colorMap[props.type].color
-        );
     };
 
     let timer = null;
@@ -140,7 +107,7 @@ export default {
     delayClose();
 
     return {
-      colorMap,
+      iconMap,
       isShow,
       close,
       handleMouseEnter,
