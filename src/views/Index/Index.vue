@@ -44,6 +44,7 @@
       class="input-topic-content"
       type="textarea"
       placeholder="请输入内容"
+      @keydown="publishByEnterKey"
     ></ch-input>
     <template v-slot:footer>
       <ch-button class="publish-btn" type="primary" @click="confirmDialog">
@@ -100,6 +101,15 @@ export default {
     const hideDialog = () => {
       // TODO 添加二次确认，点击确认后清除输入内容  topic.value.title = ""; topic.value.content = "";
       showPublishDialog.value = false;
+    };
+
+    const publishByEnterKey = e => {
+      // 按下 ctrl/command + Enter 提交
+      if ((e.ctrlKey || e.metaKey) && e.key === "Enter") {
+        confirmDialog();
+        // 阻止默认事件
+        e.preventDefault();
+      }
     };
 
     /**
@@ -191,6 +201,7 @@ export default {
       publishTopicInterface,
       confirmDialog,
       openDialog,
+      publishByEnterKey,
       loading,
       showMessage,
       messageText
