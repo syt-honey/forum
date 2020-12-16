@@ -3,7 +3,6 @@ const path = require("path");
 module.exports = {
   publicPath: "/",
   assetsDir: "static",
-  // publicPath: process.env.NODE_ENV === "production" ? "/home/forum/" : "/",
   devServer: {
     proxy: {
       "/api": {
