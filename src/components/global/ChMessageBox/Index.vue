@@ -30,7 +30,7 @@
 <script>
 import { toRefs } from "vue";
 export default {
-  // 自定义 Dialog UI
+  // 自定义 MessageBox UI
   name: "ChMessageBox",
 
   props: {
