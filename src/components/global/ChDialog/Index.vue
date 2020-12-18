@@ -37,12 +37,12 @@ export default {
 
   setup(props, context) {
     const { closeOnClickModal } = toRefs(props);
-    const hideDialog = () => {
-      context.emit("hide-dialog");
+    const hideDialog = (e, hide) => {
+      context.emit("hide-dialog", hide);
     };
-    const handleWrapperClick = () => {
+    const handleWrapperClick = e => {
       if (!closeOnClickModal) return;
-      hideDialog();
+      hideDialog(e, true);
     };
     return {
       hideDialog,

@@ -2,7 +2,6 @@
   <div class="home">
     <nav-bar class="nav-bar"></nav-bar>
     <div class="main-container">
-      <!--      <ch-message-box></ch-message-box>-->
       <side-bar @publishTopic="openDialog()" class="side-bar"></side-bar>
       <template v-if="loading">
         <!--    TODO 实现 loading 指令-->
@@ -97,21 +96,29 @@ export default {
       showPublishDialog.value = true;
     };
 
-    const hideDialog = () => {
+    /**
+     * hide: 是否是点击空白区域触发的事件。如果是点击空白区域，则 hide 为 true
+     */
+    const hideDialog = hide => {
       // TODO 需要使用 promise 的形式实现
-      ctx.$messageBox("关闭后将不保存已输入的内容", "提示", {
-        confirmButtonText: "确定",
-        cancelButtonText: "取消",
-        type: "warning",
-        click: () => {
-          // TODO 会默认执行两遍
-          if (showPublishDialog.value) {
-            topic.value.title = "";
-            topic.value.content = "";
-            showPublishDialog.value = false;
+      if ((!topic.value.title && !topic.value.content) || hide) {
+        // 没有内容或 hide 为真时不做判断
+        showPublishDialog.value = false;
+      } else {
+        ctx.$messageBox("关闭后将不保存已输入的内容", "提示", {
+          confirmButtonText: "确定",
+          cancelButtonText: "取消",
+          type: "warning",
+          click: () => {
+            // TODO 会默认执行两遍
+            if (showPublishDialog.value) {
+              topic.value.title = "";
+              topic.value.content = "";
+              showPublishDialog.value = false;
+            }
           }
-        }
-      });
+        });
+      }
     };
 
     const publishByEnterKey = e => {
@@ -127,6 +134,7 @@ export default {
      * 点击发布主题方法
      */
     const confirmDialog = () => {
+      // TODO 发布后清空内容
       // 以下是暂时的解决方法。
       // TODO 如何控制事件捕获/事件冒泡来阻止事件被触发两次？
       if (showPublishDialog.value) {
