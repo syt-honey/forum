@@ -98,8 +98,20 @@ export default {
     };
 
     const hideDialog = () => {
-      // TODO 添加二次确认，点击确认后清除输入内容  topic.value.title = ""; topic.value.content = "";
-      showPublishDialog.value = false;
+      // TODO 需要使用 promise 的形式实现
+      ctx.$messageBox("关闭后将不保存已输入的内容", "提示", {
+        confirmButtonText: "确定",
+        cancelButtonText: "取消",
+        type: "warning",
+        click: () => {
+          // TODO 会默认执行两遍
+          if (showPublishDialog.value) {
+            topic.value.title = "";
+            topic.value.content = "";
+            showPublishDialog.value = false;
+          }
+        }
+      });
     };
 
     const publishByEnterKey = e => {

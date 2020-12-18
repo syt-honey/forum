@@ -1,5 +1,5 @@
 <template>
-  <div class="ch-dialog-mask" @click.self="handleWrapperClick">
+  <div v-show="isShow" class="ch-dialog-mask" @click.self="handleWrapperClick">
     <div class="ch-message-box__wrap">
       <svg-icon
         icon-class="ch-cancel"
@@ -9,18 +9,24 @@
       <div class="ch-message-box__header">{{ title }}</div>
       <ch-border class="ch-horizontal-line"></ch-border>
       <div class="ch-message-box__body">
-        {{ message }}
+        <div>
+          <svg-icon
+            :icon-class="iconMap[type] && iconMap[type].iconName"
+            class="ch-icon ch-tip-icon"
+          />
+        </div>
+        <p v-if="message">{{ message }}</p>
       </div>
       <div class="ch-message-box__footer">
         <ch-button class="ch-cancel-btn" @click="hideMessageBox">
-          取消
+          {{ cancelButtonText }}
         </ch-button>
         <ch-button
           type="primary"
           class="ch-confirm-btn"
           @click="confirmMessageBox"
         >
-          确定
+          {{ confirmButtonText }}
         </ch-button>
       </div>
     </div>
@@ -28,10 +34,20 @@
 </template>
 
 <script>
-import { toRefs } from "vue";
+import { toRefs, ref } from "vue";
+import ChButton from "@/components/global/ChButton/Index";
+import SvgIcon from "@/components/global/SvgIcon/Index";
+import ChBorder from "@/components/global/ChBorder/Index";
+
 export default {
   // 自定义 MessageBox UI
   name: "ChMessageBox",
+
+  components: {
+    ChButton,
+    SvgIcon,
+    ChBorder
+  },
 
   props: {
     title: {
@@ -45,16 +61,42 @@ export default {
     closeOnClickModal: {
       type: Boolean,
       default: false
+    },
+    confirmButtonText: {
+      type: String,
+      default: "确认"
+    },
+    cancelButtonText: {
+      type: String,
+      default: "取消"
+    },
+    type: {
+      type: String,
+      default: "warning"
+    },
+    click: {
+      type: Function
     }
   },
 
-  setup(props, context) {
+  setup(props) {
+    const isShow = ref(true);
     const { closeOnClickModal } = toRefs(props);
-    const hideMessageBox = () => {
-      context.emit("hide-message-box");
+    const iconMap = {
+      // 警告
+      warning: {
+        iconName: "ch-tip-warning"
+      }
     };
 
-    const confirmMessageBox = () => {};
+    const hideMessageBox = () => {
+      isShow.value = false;
+    };
+
+    const confirmMessageBox = () => {
+      isShow.value = false;
+      props.click();
+    };
 
     const handleWrapperClick = () => {
       if (!closeOnClickModal) return;
@@ -62,6 +104,8 @@ export default {
     };
 
     return {
+      iconMap,
+      isShow,
       hideMessageBox,
       confirmMessageBox,
       handleWrapperClick

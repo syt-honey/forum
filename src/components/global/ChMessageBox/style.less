@@ -12,9 +12,7 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    min-width: 300px;
-    max-width: 600px;
+    width: 450px;
     margin: 200px auto;
     background: #fff;
     border-radius: 4px;
@@ -44,9 +42,24 @@
 
     .ch-message-box__body {
       display: flex;
-      flex-direction: column;
       padding: 10px 20px;
       color: #606266;
+
+      p {
+        min-width: 300px;
+        line-height: 25px;
+        font-size: 14px;
+      }
+
+      .ch-icon {
+        width: 14px;
+        cursor: pointer;
+      }
+
+      .ch-tip-icon {
+        width: 18px;
+        margin-right: 10px;
+      }
     }
 
     .ch-message-box__footer {

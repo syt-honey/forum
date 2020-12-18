@@ -7,6 +7,7 @@ import service from "./utils/index";
 import "./assets/style/index.less";
 import "./assets/icons";
 import { Message } from "@/components/global/ChMessage/index.js";
+import { MessageBox } from "@/components/global/ChMessageBox/index.js";
 
 const app = createApp(App);
 
@@ -18,6 +19,7 @@ componentMap.forEach((value, key) => {
 // 将请求服务挂载到实例上
 app.config.globalProperties.$service = service;
 app.config.globalProperties.$message = Message;
+app.config.globalProperties.$messageBox = MessageBox;
 
 app
   .use(store)
