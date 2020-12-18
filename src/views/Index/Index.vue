@@ -60,7 +60,6 @@ import SideBar from "@/components/SideBar/SideBar";
 import MainContent from "@/views/Home/Index";
 import TheFooter from "@/components/Footer/Index";
 import { ref, getCurrentInstance, onMounted } from "vue";
-import { RES_CODE } from "@/utils/constant";
 import { mapState } from "vuex";
 export default {
   name: "Index",
@@ -147,7 +146,9 @@ export default {
         .getTopic({ data })
         .then(res => {
           loading.value = false;
-          topicList.value = res.data.list;
+          if (res) {
+            topicList.value = res.data.list;
+          }
         })
         .catch(err => {
           ctx.$message({
@@ -168,17 +169,12 @@ export default {
         .publishTopic({ data })
         .then(res => {
           loading.value = false;
-          if (res.code === RES_CODE.SUCCESS) {
+          if (res) {
             ctx.$message({
               message: "发布成功",
               type: "success"
             });
             getTopicInterface();
-          } else if (res.code === RES_CODE.FAIL) {
-            ctx.$message({
-              message: `发布失败：${res.msg}`,
-              type: "error"
-            });
           }
         })
         .catch(err => {

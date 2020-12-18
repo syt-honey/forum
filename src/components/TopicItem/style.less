@@ -32,7 +32,6 @@
     text-overflow: ellipsis;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 4;
-    transition: max-height .3s;
     color: #797979;
     cursor: pointer;
     overflow-wrap: break-word;
@@ -44,9 +43,13 @@
 
   // 内容展出后样式
   .topic-content-spread {
-    max-height: 500px;
     cursor: pointer;
     overflow-wrap: break-word;
+
+    p {
+      line-height: 25px;
+      white-space: break-spaces;
+    }
   }
 }
 

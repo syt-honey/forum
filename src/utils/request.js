@@ -1,5 +1,6 @@
 import axios from "axios";
-import { TIMEOUT, URL_BASE } from "@/utils/constant";
+import { TIMEOUT, URL_BASE, RES_CODE } from "@/utils/constant";
+import { Message } from "@/components/global/ChMessage";
 
 const codeMessage = {
   200: "服务器成功返回请求的数据。",
@@ -21,7 +22,8 @@ const axiosConfig = {
 const axiosResponse = {
   success: response => {
     responseLog(response);
-    return checkStatus(response);
+    const data = checkStatus(response);
+    return checkDataCode(data);
   },
   error: error => {
     console.error("responseErr：" + error);
@@ -58,6 +60,10 @@ export default async function request(
   return axios(defaultConfig);
 }
 
+/**
+ * 打印响应信息
+ * @param response
+ */
 function responseLog(response) {
   if (process.env.NODE_ENV === "development") {
     const randomColor = `rgba(${Math.round(Math.random() * 255)},${Math.round(
@@ -77,6 +83,11 @@ function responseLog(response) {
   }
 }
 
+/**
+ * 检查返回的系统状态码
+ * @param response
+ * @returns {{msg: string, status: number}|{msg: *, status: *}|*}
+ */
 function checkStatus(response) {
   // 如果http状态码正常，则直接返回数据
   if (response) {
@@ -95,4 +106,27 @@ function checkStatus(response) {
     status: -404,
     msg: "网络异常"
   };
+}
+
+/**
+ * 统一处理后端返回的状态码
+ * @param data
+ * @returns {*}
+ */
+function checkDataCode(data) {
+  if (data) {
+    if (data.code === RES_CODE.SUCCESS) {
+      return data;
+    } else if (data.code === RES_CODE.FAIL) {
+      Message({
+        message: `请求失败：${data.msg}`,
+        type: "error"
+      });
+    } else if (data.code === RES_CODE.INNER_ERR) {
+      Message({
+        message: `请求失败：${data.msg}${data.err}`,
+        type: "error"
+      });
+    }
+  }
 }

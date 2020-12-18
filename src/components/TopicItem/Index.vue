@@ -9,7 +9,7 @@
     <div class="content-desc">
       <div>
         <span class="title">{{ topicItem.title.trim() }}</span>
-        <span class="time">{{ formatDate(topicItem.createDate) }}</span>
+        <span class="time">{{ topicItem.createDate }}</span>
       </div>
     </div>
     <div
@@ -23,7 +23,8 @@
 
 <script>
 import { ref } from "vue";
-import dayjs from "dayjs";
+// import { formatTime } from "@/utils/common";
+
 export default {
   name: "TopicItem",
 
@@ -43,14 +44,13 @@ export default {
     };
   },
 
-  computed: {
-    formatDate() {
-      return function(value) {
-        // TODO 添加规则
-        return dayjs(value).format("MM月DD日");
-      };
-    }
-  },
+  // computed: {
+  //   formatDate() {
+  //     return function(value) {
+  //       return formatTime(new Date(value).getTime());
+  //     };
+  //   }
+  // },
 
   methods: {
     // 点击收缩内容，改变收缩状态
