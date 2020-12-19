@@ -134,7 +134,6 @@ export default {
      * 点击发布主题方法
      */
     const confirmDialog = () => {
-      // TODO 发布后清空内容
       // 以下是暂时的解决方法。
       // TODO 如何控制事件捕获/事件冒泡来阻止事件被触发两次？
       if (showPublishDialog.value) {
@@ -204,6 +203,8 @@ export default {
           });
           loading.value = false;
         });
+      topic.value.title = "";
+      topic.value.content = "";
     };
 
     return {
