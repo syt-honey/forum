@@ -1,0 +1,60 @@
+.mk-header {
+  display: flex;
+  align-items: center;
+  position: relative;
+ .wh(100%, 56px);
+  background: #fff;
+  border-bottom: 1px solid #ddd;;
+
+  .mk-title {
+    .wh(300px, 55px);
+    ::v-deep(.ch-input--input)  {
+      .wh(100%, 100%);
+      border: none;
+    }
+  }
+}
+
+.mk-content {
+  height: calc(100% - 56px);
+
+  // 覆盖原样式
+  ::v-deep(.v-md-editor-preview) {
+
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 35px;
+    }
+
+    p {
+      margin-top: 22px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      padding-bottom: 12px;
+    }
+
+    hr {
+      margin-top: 32px;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.mk-pub-btn {
+  position: absolute;
+  top: 10px;
+  right: 66px;
+  color: #4f8bee;
+  background: #fff;
+  border: none;
+}
+
+.mk-cancel-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #4f8bee;
+  background: #fff;
+  border: none;
+}

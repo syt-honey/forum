@@ -1,10 +1,5 @@
 <template>
-  <button
-    type="button"
-    class="ch-button"
-    :class="[`ch-button-${type}`]"
-    @click="handleClick"
-  >
+  <button type="button" class="ch-button" :class="[`ch-button-${type}`]">
     <slot />
   </button>
 </template>
@@ -19,15 +14,6 @@ export default {
       type: String,
       default: () => "normal"
     }
-  },
-
-  setup(props, context) {
-    const handleClick = e => {
-      context.emit("click", e);
-    };
-    return {
-      handleClick
-    };
   }
 };
 </script>

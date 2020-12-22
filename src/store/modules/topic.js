@@ -1,4 +1,3 @@
-// import { ref } from "vue";
 const state = {
   // 当前选中的主题
   currentFocusTopic: "all"

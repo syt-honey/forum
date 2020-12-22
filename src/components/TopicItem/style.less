@@ -20,13 +20,9 @@
     }
   }
 
-  p {
-    line-height: 25px;
-  }
-
   // TODO 动画没有生效
   .content {
-    max-height: 100px;
+    //max-height: 100px;
     display: -webkit-box;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -35,6 +31,14 @@
     color: #797979;
     cursor: pointer;
     overflow-wrap: break-word;
+    font-size: 14px;
+
+    ::v-deep(.v-md-editor-preview) {
+      padding: 0;
+      font-size: 14px;
+      line-height: 25px;
+    }
+
     :hover {
       color: #414141;
       cursor: pointer;
@@ -46,10 +50,12 @@
     cursor: pointer;
     overflow-wrap: break-word;
 
-    p {
+    ::v-deep(.v-md-editor-preview) {
+      padding: 0;
+      font-size: 14px;
       line-height: 25px;
-      white-space: break-spaces;
     }
+
   }
 }
 

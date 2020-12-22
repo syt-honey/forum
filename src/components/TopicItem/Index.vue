@@ -16,7 +16,7 @@
       :class="isSpread ? 'topic-content-spread' : 'content'"
       @click="spreadContent()"
     >
-      <p>{{ topicItem.content.trim() }}</p>
+      <v-md-preview :text="topicItem.content.trim()"></v-md-preview>
     </div>
   </div>
 </template>

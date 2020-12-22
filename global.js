@@ -14,7 +14,7 @@ const env = {
   }
 };
 
-const curEnv = "pro";
+const curEnv = "dev";
 
 module.exports = {
   env,
