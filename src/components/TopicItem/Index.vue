@@ -14,16 +14,19 @@
     </div>
     <div
       :class="isSpread ? 'topic-content-spread' : 'content'"
-      @click="spreadContent()"
+      @click="spreadContent"
     >
-      <v-md-preview :text="topicItem.content.trim()"></v-md-preview>
+      <v-md-preview
+        v-if="isSpread"
+        :text="topicItem.content.trim()"
+      ></v-md-preview>
+      <p v-else>{{ handleContent }}</p>
     </div>
   </div>
 </template>
 
 <script>
 import { ref } from "vue";
-// import { formatTime } from "@/utils/common";
 
 export default {
   name: "TopicItem",
@@ -38,23 +41,35 @@ export default {
   setup() {
     // 初始化 isSpread 值
     let isSpread = ref(false);
+    let nowPosY = 0;
 
     return {
-      isSpread
+      isSpread,
+      nowPosY
     };
   },
 
-  // computed: {
-  //   formatDate() {
-  //     return function(value) {
-  //       return formatTime(new Date(value).getTime());
-  //     };
-  //   }
-  // },
+  computed: {
+    handleContent() {
+      // 将文本中的 markdown 字符去掉
+      return this.topicItem.content.trim().replace(/>|#|##|`|\*|\||-/g, "");
+    }
+  },
 
   methods: {
     // 点击收缩内容，改变收缩状态
-    spreadContent() {
+    spreadContent(e) {
+      if (!this.isSpread) {
+        // 收起的状态，触发展开
+        this.nowPosY = e.pageY;
+      } else {
+        // 如果差值小于 430（文本未展开时的高度）则不滚动
+        const offsetY =
+          Math.abs(this.nowPosY - e.pageY) < 430 ? 0 : this.nowPosY - e.pageY;
+        window.scrollBy({
+          top: offsetY
+        });
+      }
       this.isSpread = !this.isSpread;
     }
   }

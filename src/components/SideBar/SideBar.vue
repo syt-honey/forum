@@ -28,23 +28,23 @@ export default {
         name: "全部主题",
         type: "all",
         isSelected: true
-      },
-      {
-        name: "精华主题",
-        type: "essence",
-        isSelected: false
-      },
-      {
-        name: "文件主题",
-        type: "file",
-        isSelected: false
-      },
-      {
-        name: "图片主题",
-        type: "image",
-        isSelected: false
       }
     ]);
+    // {
+    //   name: "精华主题",
+    //   type: "essence",
+    //   isSelected: false
+    // },
+    // {
+    //   name: "文件主题",
+    //   type: "file",
+    //   isSelected: false
+    // },
+    // {
+    //   name: "图片主题",
+    //   type: "image",
+    //   isSelected: false
+    // }
 
     const publishEvent = () => {
       context.emit("publish-topic");
