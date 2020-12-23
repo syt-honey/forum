@@ -59,8 +59,13 @@ export default {
   methods: {
     // 点击收缩内容，改变收缩状态
     spreadContent(e) {
+      // 如果为用户选中事件，则不处理
+      if (window.getSelection().toString()) {
+        return;
+      }
+
       if (!this.isSpread) {
-        // 收起的状态，触发展开
+        // 此时内容的状态为"收起"，记录点击时的 pageY
         this.nowPosY = e.pageY;
       } else {
         // 如果差值小于 430（文本未展开时的高度）则不滚动
