@@ -13,11 +13,13 @@ import VueMarkdownEditor from "@kangc/v-md-editor";
 import VMdPreview from "@kangc/v-md-editor/lib/preview";
 import "@kangc/v-md-editor/lib/style/base-editor.css";
 import "@kangc/v-md-editor/lib/style/preview.css";
+import createCopyCodePlugin from "@kangc/v-md-editor/lib/plugins/copy-code/index";
 import githubTheme from "@kangc/v-md-editor/lib/theme/github.js";
-import vuepressTheme from "@kangc/v-md-editor/lib/theme/vuepress.js";
 
 VMdPreview.use(githubTheme);
-VueMarkdownEditor.use(vuepressTheme);
+VueMarkdownEditor.use(githubTheme);
+VMdPreview.use(createCopyCodePlugin());
+VueMarkdownEditor.use(createCopyCodePlugin());
 
 const app = createApp(App);
 

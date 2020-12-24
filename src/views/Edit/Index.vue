@@ -6,7 +6,11 @@
       v-model="title"
     ></ch-input>
   </div>
-  <v-md-editor v-model="content" class="mk-content"></v-md-editor>
+  <v-md-editor
+    v-model="content"
+    class="mk-content"
+    @copy-code-success="handleCopyCodeSuccess"
+  ></v-md-editor>
   <ch-button type="primary" class="mk-pub-btn" @click="publishTopicInterface"
     >发布主题</ch-button
   >
@@ -31,6 +35,14 @@ export default {
     // 根据 localStorage 中的内容初始化 title 和 content
     const content = getItem("content") ? ref(getItem("content")) : ref("");
     const title = getItem("title") ? ref(getItem("title")) : ref("无标题");
+
+    const handleCopyCodeSuccess = () => {
+      ctx.$message({
+        message: "复制成功",
+        type: "success",
+        duration: 1000
+      });
+    };
 
     /**
      * 保存
@@ -93,7 +105,8 @@ export default {
       title,
       loading,
       publishTopicInterface,
-      saveContent
+      saveContent,
+      handleCopyCodeSuccess
     };
   }
 };

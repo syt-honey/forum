@@ -18,6 +18,7 @@
     >
       <v-md-preview
         v-if="isSpread"
+        @copy-code-success="handleCopyCodeSuccess"
         :text="topicItem.content.trim()"
       ></v-md-preview>
       <p v-else>{{ handleContent }}</p>
@@ -26,7 +27,7 @@
 </template>
 
 <script>
-import { ref } from "vue";
+import { ref, getCurrentInstance } from "vue";
 
 export default {
   name: "TopicItem",
@@ -42,10 +43,23 @@ export default {
     // 初始化 isSpread 值
     let isSpread = ref(false);
     let nowPosY = 0;
+    const ctx = getCurrentInstance().appContext.config.globalProperties;
+    let click = ref(false);
+
+    const handleCopyCodeSuccess = () => {
+      ctx.$message({
+        message: "复制成功",
+        type: "success",
+        duration: 1000
+      });
+      click.value = false;
+    };
 
     return {
       isSpread,
-      nowPosY
+      nowPosY,
+      click,
+      handleCopyCodeSuccess
     };
   },
 
@@ -59,6 +73,10 @@ export default {
   methods: {
     // 点击收缩内容，改变收缩状态
     spreadContent(e) {
+      // 复制代码时不收缩
+      if (e.target.nodeName.toLocaleLowerCase() === "button") {
+        return;
+      }
       // 如果为用户选中事件，则不处理
       if (window.getSelection().toString()) {
         return;
