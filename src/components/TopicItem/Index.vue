@@ -66,7 +66,10 @@ export default {
   computed: {
     handleContent() {
       // 将文本中的 markdown 字符去掉
-      return this.topicItem.content.trim().replace(/>|#|##|`|\*|\||-/g, "");
+      // !?\[.*]\(.*\) 替换图片和链接
+      return this.topicItem.content
+        .trim()
+        .replace(/>|#|##|`|\*|\||-|!?\[.*]\(.*\)/g, "");
     }
   },
 
