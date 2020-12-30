@@ -19,7 +19,7 @@
             alt="no-data"
             class="placeholder-img"
           />
-          <span class="placeholder-text">暂无主题</span>
+          <span class="placeholder-text">留下你的想法～</span>
         </div>
       </template>
     </div>
