@@ -10,19 +10,24 @@
     v-model="content"
     class="mk-content"
     @copy-code-success="handleCopyCodeSuccess"
+    left-toolbar="undo redo clear | h bold italic strikethrough quote | ul ol table hr | link code image | save"
+    :disabled-menus="[]"
+    @save="saveContent"
+    @upload-image="handleUploadImage"
   ></v-md-editor>
   <ch-button type="primary" class="mk-pub-btn" @click="publishTopicInterface"
     >发布主题</ch-button
   >
-  <ch-button type="primary" class="mk-cancel-btn" @click="saveContent"
-    >保存</ch-button
-  >
+  <!--  <ch-button type="primary" class="mk-cancel-btn" @click="saveContent"-->
+  <!--    >保存</ch-button-->
+  <!--  >-->
   <ch-loading :visible="loading"></ch-loading>
 </template>
 
 <script>
 import { getCurrentInstance } from "vue";
 import { ref } from "vue";
+// import axios from "axios";
 import { addItem, getItem, clearItem } from "@/utils/localStorage";
 
 export default {
@@ -100,10 +105,23 @@ export default {
       }
     };
 
+    const handleUploadImage = () => {
+      // let formData = new FormData();
+      // formData.append("file", files[0]);
+      // axios.post("/api/file/upload", formData).then(res => {
+      //   console.log(res);
+      // });
+      ctx.$message({
+        message: "该功能暂未开放～",
+        type: "warning"
+      });
+    };
+
     return {
       content,
       title,
       loading,
+      handleUploadImage,
       publishTopicInterface,
       saveContent,
       handleCopyCodeSuccess
